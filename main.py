@@ -38,12 +38,11 @@ def main():
     st.subheader("파일별 로드 현황")
     
     status_df = pd.DataFrame({
-        '데이터셋': ['합계출산율', '총인구/출생/사망', '성별+연령별 인구', '지역별 인구밀도', '지역별 인구수', '지도 GeoJSON'],
-        '필수 파일': ['합계출산율.csv', '인구통계 1998부터.csv', '**성연령통계.csv**', '지역별 인구밀도.csv', '지역별 인구수.csv', 'GeoJSON 파일'],
+        '데이터셋': ['합계출산율', '총인구/출생/사망', '지역별 인구밀도', '지역별 인구수', '지도 GeoJSON'],
+        '필수 파일': ['합계출산율.csv', '인구통계 1998부터.csv', '지역별 인구밀도.csv', '지역별 인구수.csv', 'GeoJSON 파일'],
         '로드 여부': [
             data_status['is_data_available'].get('df_fert', False),
             data_status['is_data_available'].get('df_pop_total', False),
-            data_status['is_data_available'].get('df_age_long_sex', False),
             data_status['is_data_available'].get('df_density', False),
             data_status['is_data_available'].get('df_pop_region', False),
             data_status['is_data_available'].get('korea_geo', False)
@@ -56,4 +55,5 @@ def main():
     st.table(status_df.style.applymap(lambda x: 'background-color: #fce4e4' if x == '로드 실패/데이터 부족' else ('background-color: #e6ffe6' if x == '로드 성공' else ''), subset=['로드 여부']).format({'로드 여부': status_formatter}))
 
 if __name__ == "__main__":
+
     main()
