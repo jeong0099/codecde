@@ -5,7 +5,7 @@ from typing import Dict, Any, Tuple, Optional, List
 
 # 환경 설정 및 초기화
 st.set_page_config(
-    page_title="대한민국 인구 통계 분석", 
+    page_title="데이터 분석과 시각화를 통한 인구 문제 탐구", 
     layout="wide"
 )
 
@@ -23,14 +23,15 @@ def main():
     }
     
     # 기존 내용
-    st.title("대한민국 인구 통계 분석")
+    st.title("데이터 분석과 시각화를 통한 인구 문제 탐구")
     st.markdown("""
     본 대시보드는 출산율, 인구 구조, 지역별 인구 쏠림 현상 데이터를 분석하는 목적으로 설계되었습니다.
-    * **외부 파일(CSV) 기반**으로만 데이터를 로드합니다.
-    * 데이터 로드에 실패하면 해당 분석 페이지에서 **차트를 표시하지 않습니다.**
+    * CSV 기반으로 시각화하였습니다.
+    * 데이터 로드에 실패하면 차트가 표시되지 않습니다.
+    * 속도가 느릴 경우 캐시를 삭제해 주세요
     """)
 
-    st.subheader("데이터 로드 상태 요약")
+    st.subheader("데이터 로드 상태")
     
     st.info(f"분석 가능 최대 연도 범위: **{data_status['min_year']}년 ~ {data_status['max_year']}년**")
 
@@ -55,5 +56,4 @@ def main():
     st.table(status_df.style.applymap(lambda x: 'background-color: #fce4e4' if x == '로드 실패/데이터 부족' else ('background-color: #e6ffe6' if x == '로드 성공' else ''), subset=['로드 여부']).format({'로드 여부': status_formatter}))
 
 if __name__ == "__main__":
-
     main()
