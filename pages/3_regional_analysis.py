@@ -46,7 +46,7 @@ else:
         step=1,
         key='regional_map_year'
     )
-    st.caption(f"현재 선택된 연도: **{local_single_year_map}년** (데이터 최대 연도: {max_year_global}년)")
+    st.caption(f"현재 선택된 연도: **{local_single_year_map}년** (데이터 최대 연도: 2024년)")
 
     col1, col2 = st.columns(2)
 
