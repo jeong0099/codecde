@@ -53,7 +53,7 @@ def main():
     def status_formatter(loaded: bool) -> str:
         return '로드 성공' if loaded else '로드 실패/데이터 부족'
         
-    st.table(status_df.style.applymap(lambda x: 'background-color: #fce4e4' if x == '로드 실패/데이터 부족' else ('background-color: #e6ffe6' if x == '로드 성공' else ''), subset=['로드 여부']).format({'로드 여부': status_formatter}))
+    st.table(status_df.style.map(lambda x: 'background-color: #fce4e4' if x == '로드 실패/데이터 부족' else ('background-color: #e6ffe6' if x == '로드 성공' else ''), subset=['로드 여부']).format({'로드 여부': status_formatter}))
 
 if __name__ == "__main__":
     main()
